@@ -21,6 +21,8 @@ class Txl < Formula
   bottle :unneeded
 
   def install
+    inreplace "bin/txlc", "/usr/local/lib/txl", "#{libexec}/lib"
+    inreplace "bin/txlp", "/usr/local/lib/txl", "#{libexec}/lib"
     libexec.install Dir["*"]
     bin.write_exec_script Dir["#{libexec}/bin/*"]
     man1.install Dir["#{libexec}/man/man1/*.1"]
